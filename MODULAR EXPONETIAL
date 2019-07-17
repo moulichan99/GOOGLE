@@ -1,0 +1,26 @@
+int modExp(int a, int b, int c){
+    if(b==0)
+        return 1;
+    
+    else if(b%2==0)
+    {
+        int y =modExp(a,b/2,c);
+        return (y * y)%c ;
+    }
+    else
+      return ((a%c)*modExp(a,b-1,c))%c;
+}
+
+
+logic :
+
+a^b mod c -------
+
+In terms of datatype compatability
+      --> we first mod it and then find power
+      
+      apply distributive law
+      IN ODD 
+            ( (a % c) . (a ^ b-1 %c) ) % c ;
+      IN EVEN 
+            ( (a ^ b/2 % c ).(a ^ b/2 % c ))%c; 
